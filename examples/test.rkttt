@@ -1,0 +1,10 @@
+(let (: bool set)
+  (sum ['t 'f]))
+
+(let (: edwin set)
+  (sum [('fart bool)]))
+
+(let (: destr (pi (: _ edwin) bool))
+  (fun [(=> ('fart x)
+        (fun [('t 't)
+              ('f 'f)]))]))

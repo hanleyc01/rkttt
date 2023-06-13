@@ -1,5 +1,5 @@
-0	g6214	=	(g6215)
-1	g6215	=	(decls EOF)
+0	g982	=	(g983)
+1	g983	=	(decls EOF)
 2	decls	=	()
 3	decls	=	(decl)
 4	decls	=	(decl decls)
@@ -36,20 +36,20 @@
 35	branches	=	(branch)
 36	branches	=	(branch branches)
 State 0
-	g6214 -> . g6215 
+	g982 -> . g983 
 
+	g983					goto	1
 	decls					goto	2
 	LPAREN					shift	4
-	g6215					goto	1
 	EOF					reduce	2
 	decl					goto	3
 
 State 1
-	g6214 -> g6215 . 
+	g982 -> g983 . 
 
 
 State 2
-	g6215 -> decls . EOF 
+	g983 -> decls . EOF 
 
 	EOF					accept	
 
@@ -73,7 +73,7 @@ State 4
 	LETREC					shift	8
 
 State 5
-	g6215 -> decls EOF . 
+	g983 -> decls EOF . 
 
 
 State 6

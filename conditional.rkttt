@@ -1,8 +1,0 @@
-(let (: bool set)
-  (sum ['t 'f]))
-
-(let (: if (pi (: a set) (-> (* a a) (-> bool a))))
-  (lambda a
-    (lambda (, x y)
-      (fun [(=> 't x)
-            (=> 'f y)]))))

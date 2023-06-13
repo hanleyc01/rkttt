@@ -1,0 +1,397 @@
+(#(struct:ddec
+   #(struct:pvar two)
+   #(struct:eset)
+   #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))
+ #(struct:ddec
+   #(struct:pvar one)
+   #(struct:eset)
+   #(struct:esum #hash(('tt . #(struct:eunit)))))
+ #(struct:ddec
+   #(struct:pvar rt)
+   #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset))
+   #(struct:efun
+     #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one)))
+           ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))
+ #(struct:ddec
+   #(struct:pvar func)
+   #(struct:epi
+     #(struct:pvar b)
+     #(struct:evar two)
+     #(struct:eapp #(struct:evar rt) #(struct:evar b)))
+   #(struct:efun
+     #hash(('f
+            .
+            #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone))))
+           ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))))
+check-main with:
+	#(struct:edecl #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))) #(struct:edecl #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))) #(struct:edecl #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))) #(struct:edecl #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))) #(struct:eone)))))
+	#(struct:vunit)
+check with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:edecl #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))) #(struct:edecl #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))) #(struct:edecl #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))) #(struct:edecl #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))) #(struct:eone)))))
+	#(struct:vunit)
+check-decl with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))
+check-type with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:eset)
+check with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))
+	#(struct:vset)
+check with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:eunit)
+	#(struct:vset)
+check with:
+	0
+	#(struct:tnil)
+	#hash()
+	#(struct:eunit)
+	#(struct:vset)
+up-g with:
+	#hash()
+	#(struct:pvar two)
+	#(struct:vset):
+	#(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))
+check with:
+	0
+	#(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))
+	#hash((two . #(struct:vset)))
+	#(struct:edecl #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))) #(struct:edecl #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))) #(struct:edecl #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))) #(struct:eone))))
+	#(struct:vunit)
+check-decl with:
+	0
+	#(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))
+	#hash((two . #(struct:vset)))
+	#(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))
+check-type with:
+	0
+	#(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))
+	#hash((two . #(struct:vset)))
+	#(struct:eset)
+check with:
+	0
+	#(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))
+	#hash((two . #(struct:vset)))
+	#(struct:esum #hash(('tt . #(struct:eunit))))
+	#(struct:vset)
+check with:
+	0
+	#(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))
+	#hash((two . #(struct:vset)))
+	#(struct:eunit)
+	#(struct:vset)
+up-g with:
+	#hash((two . #(struct:vset)))
+	#(struct:pvar one)
+	#(struct:vset):
+	#(struct:vsum #(struct:sclos #hash(('tt . #(struct:eunit))) #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))))
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:edecl #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))) #(struct:edecl #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))) #(struct:eone)))
+	#(struct:vunit)
+check-decl with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))
+check-type with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset))
+check-type with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar two)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar two)
+	#(struct:vset)
+check-infer with:0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar two)
+equal-nf? with 0 #(struct:vset) #(struct:vset)
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))):
+	#(struct:vnt #(struct:ntgen 0))
+check-type with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:eset)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))
+	#(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:eunit))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))) 't))
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:eunit)
+	#(struct:vset)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:eunit))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))) 't))
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:eunit)
+	#(struct:vset)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:evar one))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))) 'f))
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar one)
+	#(struct:vset)
+check-infer with:1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar one)
+equal-nf? with 1 #(struct:vset) #(struct:vset)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:evar one))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))) 'f))
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar one)
+	#(struct:vset)
+check-infer with:1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:evar one)
+equal-nf? with 1 #(struct:vset) #(struct:vset)
+up-g with:
+	#hash((one . #(struct:vset)) (two . #(struct:vset)))
+	#(struct:pvar rt)
+	#(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))))):
+	#(struct:vfun #(struct:sclos #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:edecl #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))) #(struct:eone))
+	#(struct:vunit)
+check-decl with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone))))))
+check-type with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b)))
+check-type with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar two)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar two)
+	#(struct:vset)
+check-infer with:0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar two)
+equal-nf? with 0 #(struct:vset) #(struct:vset)
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pvar b)
+	#(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))):
+	#(struct:vnt #(struct:ntgen 0))
+check-type with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eapp #(struct:evar rt) #(struct:evar b))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eapp #(struct:evar rt) #(struct:evar b))
+	#(struct:vset)
+check-infer with:1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eapp #(struct:evar rt) #(struct:evar b))
+check-infer with:1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar rt)
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar b)
+	#(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))
+check-infer with:1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pvar b) #(struct:vnt #(struct:ntgen 0)))
+	#hash((b . #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:evar b)
+equal-nf? with 1 #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil)))
+equal-nf? with 1 #(struct:vset) #(struct:vset)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))
+	#(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))))
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:eone))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))) 't))
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eone)
+	#(struct:vunit)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:eone))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))) 't))
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eone)
+	#(struct:vunit)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))) 'f))
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:econ 'tt #(struct:eone))
+	#(struct:vsum #(struct:sclos #hash(('tt . #(struct:eunit))) #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eone)
+	#(struct:vunit)
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))
+	#(struct:vpi #(struct:vunit) #(struct:cmp #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))) 'f))
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pwild)
+	#(struct:vunit):
+	#(struct:vnt #(struct:ntgen 0))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:econ 'tt #(struct:eone))
+	#(struct:vsum #(struct:sclos #hash(('tt . #(struct:eunit))) #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))))))))
+check with:
+	1
+	#(struct:tupvar #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:pwild) #(struct:vnt #(struct:ntgen 0)))
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eone)
+	#(struct:vunit)
+up-g with:
+	#hash((one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:pvar func)
+	#(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))))):
+	#(struct:vfun #(struct:sclos #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))))
+check with:
+	0
+	#(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit))))))) #(struct:ddec #(struct:pvar func) #(struct:epi #(struct:pvar b) #(struct:evar two) #(struct:eapp #(struct:evar rt) #(struct:evar b))) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:econ 'tt #(struct:eone)))) ('t . #(struct:elam #(struct:pwild) #(struct:eone)))))))
+	#hash((func . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pvar b) #(struct:eapp #(struct:evar rt) #(struct:evar b)) #(struct:tupdec #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit)))))) #(struct:ddec #(struct:pvar rt) #(struct:epi #(struct:pwild) #(struct:evar two) #(struct:eset)) #(struct:efun #hash(('f . #(struct:elam #(struct:pwild) #(struct:evar one))) ('t . #(struct:elam #(struct:pwild) #(struct:eunit)))))))))) (one . #(struct:vset)) (rt . #(struct:vpi #(struct:vsum #(struct:sclos #hash(('f . #(struct:eunit)) ('t . #(struct:eunit))) #(struct:tnil))) #(struct:cls #(struct:pwild) #(struct:eset) #(struct:tupdec #(struct:tupdec #(struct:tnil) #(struct:ddec #(struct:pvar two) #(struct:eset) #(struct:esum #hash(('f . #(struct:eunit)) ('t . #(struct:eunit)))))) #(struct:ddec #(struct:pvar one) #(struct:eset) #(struct:esum #hash(('tt . #(struct:eunit))))))))) (two . #(struct:vset)))
+	#(struct:eone)
+	#(struct:vunit)
+typecheck complete!

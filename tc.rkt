@@ -9,8 +9,14 @@
 
 (define-type Gamma (Immutable-HashTable String Val))
 
-(: up-g (-> Gamma Patt Val Val Gamma))
+(: *debug-mode* (Boxof Boolean))
+(define *debug-mode* (box #f))
+
+(: up-g (-> Gamma Patt Val Val Gamma)) 
 (define (up-g gamma p t v)
+  (when (unbox *debug-mode*)
+  (displayln (format "up-g with:\n\t~a\n\t~a\n\t~a:\n\t~a"
+                     gamma p t v)))
   (match* (p t)
     [((pwild) _)
      gamma]
@@ -22,6 +28,8 @@
 
 (: check-type (-> Integer Telescope Gamma Expr Void))
 (define (check-type k rho gamma e)
+  (when (unbox *debug-mode*)
+  (displayln (format "check-type with:\n\t~a\n\t~a\n\t~a\n\t~a" k rho gamma e)))
   (match e
     [(epi p a b)
      (begin (check-type k rho gamma a)
@@ -38,6 +46,9 @@
 
 (: check (-> Integer Telescope Gamma Expr Val Void))
 (define (check k rho gamma e* t*)
+  (when (unbox *debug-mode*)
+  (displayln (format "check with:\n\t~a\n\t~a\n\t~a\n\t~a\n\t~a"
+                     k rho gamma e* t*)))
   (match* (e* t*)
     [((elam p e) (vpi t g))
      (define gen (gen-v k))
@@ -88,6 +99,9 @@
 
 (: check-infer (-> Integer Telescope Gamma Expr Val))
 (define (check-infer k rho gamma e*)
+  (when (unbox *debug-mode*)
+  (displayln (format "check-infer with:~a\n\t~a\n\t~a\n\t~a"
+                     k rho gamma e*)))
   (match e*
     [(eset) (vset)]
     [(eunit) (vset)]
@@ -120,8 +134,15 @@
      (letrec ([x (ext-sigma t)]
               [g (cdr x)])
        (inst g (vfst (evaluate e rho))))]
-    [_ (error (format "failure in check-infer with k:\n\n\t~a\n\nrho:\n\n\t~a\n\ngamma:\n\n\t~a\n\nand e0:\n\n\t~a"
-                      k rho gamma e*))]))
+    [_ (error 
+         (format 
+           (string-append 
+             "unable to infer an expression which is not one of the following:"
+             "\n\ta projection (car/cdr <expr>)\n\ta tuple (cons <expr> <expr>)"
+             "\n\tan application (<expr> <expr>)"
+             "\n\ta variable, 0, unit, or set"
+             "\n\nthe expression given was of type:\n\t~a")
+           e*))]))
 
 (: ext-pi (-> Val (Pairof Val Clos)))
 (define (ext-pi t)
@@ -141,6 +162,9 @@
 
 (: check-decl (-> Integer Telescope Gamma Decl Gamma))
 (define (check-decl k rho gamma d)
+  (when (unbox *debug-mode*)
+  (displayln (format "check-decl with:\n\t~a\n\t~a\n\t~a\n\t~a"
+                     k rho gamma d)))
   (match d 
     [(ddec p a e)
      (begin (check-type k rho gamma a)
@@ -159,20 +183,17 @@
 
 (: equal-nf? (-> Integer Val Val Boolean))
 (define (equal-nf? k m n)
+  (when (unbox *debug-mode*)
+    (displayln (format "equal-nf? with ~a ~a ~a"
+                       k m n)))
   (begin (define e (read-back-val k m))
          (define g (read-back-val k n))
          (equal? e g)))
 
-(: check-main (-> Expr Val Void))
-(define (check-main e t)
+(: check-main (-> Boolean Expr Val Void))
+(define (check-main debug e t)
+  (set-box! *debug-mode* debug)
+  (when (unbox *debug-mode*)
+  (displayln (format "check-main with:\n\t~a\n\t~a" e t)))
   (check 0 (tnil) (hash) e t))
 
-(define (test0)
-  (define test (edecl (ddec (pvar "bool")
-                            (eset)
-                            (esum (hash 'true
-                                        (eunit)
-                                        'false
-                                        (eunit))))
-                      (evar "bool")))
-  (check-main test (vset)))
