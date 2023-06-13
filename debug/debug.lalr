@@ -1,0 +1,952 @@
+0	g6214	=	(g6215)
+1	g6215	=	(decls EOF)
+2	decls	=	()
+3	decls	=	(decl)
+4	decls	=	(decl decls)
+5	decl	=	(LPAREN LET tvar expr RPAREN)
+6	decl	=	(LPAREN LETREC tvar expr RPAREN)
+7	tvar	=	(LPAREN COLON patt expr RPAREN)
+8	patt	=	(WILD)
+9	patt	=	(IDENT)
+10	patt	=	(LPAREN COMMA patt patt RPAREN)
+11	expr	=	(IDENT)
+12	expr	=	(LABEL)
+13	expr	=	(LPAREN LABEL expr RPAREN)
+14	expr	=	(LPAREN expr expr RPAREN)
+15	expr	=	(LPAREN CONS expr expr RPAREN)
+16	expr	=	(LPAREN LAMBDA patt expr RPAREN)
+17	expr	=	(LPAREN PI tvar expr RPAREN)
+18	expr	=	(LPAREN SIGMA tvar expr RPAREN)
+19	expr	=	(LPAREN ARROW expr expr RPAREN)
+20	expr	=	(LPAREN STAR expr expr RPAREN)
+21	expr	=	(SET)
+22	expr	=	(UNIT)
+23	expr	=	(ONE)
+24	expr	=	(LPAREN LABEL expr RPAREN)
+25	expr	=	(LPAREN SUM LBRACK branches RBRACK RPAREN)
+26	expr	=	(LPAREN FUN LBRACK branches RBRACK RPAREN)
+27	expr	=	(LPAREN CAR expr RPAREN)
+28	expr	=	(LPAREN CDR expr RPAREN)
+29	expr	=	(VOID)
+30	branch	=	(LABEL)
+31	branch	=	(LPAREN LABEL expr RPAREN)
+32	branch	=	(LPAREN FATARROW LABEL expr RPAREN)
+33	branch	=	(LPAREN FATARROW LPAREN LABEL patt RPAREN expr RPAREN)
+34	branches	=	()
+35	branches	=	(branch)
+36	branches	=	(branch branches)
+State 0
+	g6214 -> . g6215 
+
+	decls					goto	2
+	LPAREN					shift	4
+	g6215					goto	1
+	EOF					reduce	2
+	decl					goto	3
+
+State 1
+	g6214 -> g6215 . 
+
+
+State 2
+	g6215 -> decls . EOF 
+
+	EOF					accept	
+
+State 3
+	decls -> decl . 
+	decls -> decl . decls 
+
+	decls					goto	6
+	LPAREN					shift	4
+begin conflict:
+	EOF					reduce	2
+	EOF					reduce	3
+end conflict
+	decl					goto	3
+
+State 4
+	decl -> LPAREN . LET tvar expr RPAREN 
+	decl -> LPAREN . LETREC tvar expr RPAREN 
+
+	LET					shift	7
+	LETREC					shift	8
+
+State 5
+	g6215 -> decls EOF . 
+
+
+State 6
+	decls -> decl decls . 
+
+	EOF					reduce	4
+
+State 7
+	decl -> LPAREN LET . tvar expr RPAREN 
+
+	tvar					goto	9
+	LPAREN					shift	10
+
+State 8
+	decl -> LPAREN LETREC . tvar expr RPAREN 
+
+	tvar					goto	11
+	LPAREN					shift	10
+
+State 9
+	decl -> LPAREN LET tvar . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	12
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 10
+	tvar -> LPAREN . COLON patt expr RPAREN 
+
+	COLON					shift	20
+
+State 11
+	decl -> LPAREN LETREC tvar . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	21
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 12
+	decl -> LPAREN LET tvar expr . RPAREN 
+
+	RPAREN					shift	22
+
+State 13
+	expr -> LPAREN . LABEL expr RPAREN 
+	expr -> LPAREN . expr expr RPAREN 
+	expr -> LPAREN . CONS expr expr RPAREN 
+	expr -> LPAREN . LAMBDA patt expr RPAREN 
+	expr -> LPAREN . PI tvar expr RPAREN 
+	expr -> LPAREN . SIGMA tvar expr RPAREN 
+	expr -> LPAREN . ARROW expr expr RPAREN 
+	expr -> LPAREN . STAR expr expr RPAREN 
+	expr -> LPAREN . LABEL expr RPAREN 
+	expr -> LPAREN . SUM LBRACK branches RBRACK RPAREN 
+	expr -> LPAREN . FUN LBRACK branches RBRACK RPAREN 
+	expr -> LPAREN . CAR expr RPAREN 
+	expr -> LPAREN . CDR expr RPAREN 
+
+	LABEL					shift	34
+	ONE					shift	15
+	SIGMA					shift	25
+	CAR					shift	30
+	ARROW					shift	32
+	LAMBDA					shift	24
+	CDR					shift	31
+	expr					goto	23
+	PI					shift	26
+	IDENT					shift	18
+	STAR					shift	33
+	CONS					shift	29
+	SUM					shift	28
+	UNIT					shift	16
+	SET					shift	14
+	FUN					shift	27
+	VOID					shift	17
+	LPAREN					shift	13
+
+State 14
+	expr -> SET . 
+
+	UNIT					reduce	21
+	LABEL					reduce	21
+	SET					reduce	21
+	ONE					reduce	21
+	VOID					reduce	21
+	LPAREN					reduce	21
+	RPAREN					reduce	21
+	IDENT					reduce	21
+
+State 15
+	expr -> ONE . 
+
+	UNIT					reduce	23
+	LABEL					reduce	23
+	SET					reduce	23
+	ONE					reduce	23
+	VOID					reduce	23
+	LPAREN					reduce	23
+	RPAREN					reduce	23
+	IDENT					reduce	23
+
+State 16
+	expr -> UNIT . 
+
+	UNIT					reduce	22
+	LABEL					reduce	22
+	SET					reduce	22
+	ONE					reduce	22
+	VOID					reduce	22
+	LPAREN					reduce	22
+	RPAREN					reduce	22
+	IDENT					reduce	22
+
+State 17
+	expr -> VOID . 
+
+	UNIT					reduce	29
+	LABEL					reduce	29
+	SET					reduce	29
+	ONE					reduce	29
+	VOID					reduce	29
+	LPAREN					reduce	29
+	RPAREN					reduce	29
+	IDENT					reduce	29
+
+State 18
+	expr -> IDENT . 
+
+	UNIT					reduce	11
+	LABEL					reduce	11
+	SET					reduce	11
+	ONE					reduce	11
+	VOID					reduce	11
+	LPAREN					reduce	11
+	RPAREN					reduce	11
+	IDENT					reduce	11
+
+State 19
+	expr -> LABEL . 
+
+	UNIT					reduce	12
+	LABEL					reduce	12
+	SET					reduce	12
+	ONE					reduce	12
+	VOID					reduce	12
+	LPAREN					reduce	12
+	RPAREN					reduce	12
+	IDENT					reduce	12
+
+State 20
+	tvar -> LPAREN COLON . patt expr RPAREN 
+
+	WILD					shift	37
+	patt					goto	35
+	LPAREN					shift	36
+	IDENT					shift	38
+
+State 21
+	decl -> LPAREN LETREC tvar expr . RPAREN 
+
+	RPAREN					shift	39
+
+State 22
+	decl -> LPAREN LET tvar expr RPAREN . 
+
+	EOF					reduce	5
+	LPAREN					reduce	5
+
+State 23
+	expr -> LPAREN expr . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	40
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 24
+	expr -> LPAREN LAMBDA . patt expr RPAREN 
+
+	WILD					shift	37
+	patt					goto	41
+	LPAREN					shift	36
+	IDENT					shift	38
+
+State 25
+	expr -> LPAREN SIGMA . tvar expr RPAREN 
+
+	tvar					goto	42
+	LPAREN					shift	10
+
+State 26
+	expr -> LPAREN PI . tvar expr RPAREN 
+
+	tvar					goto	43
+	LPAREN					shift	10
+
+State 27
+	expr -> LPAREN FUN . LBRACK branches RBRACK RPAREN 
+
+	LBRACK					shift	44
+
+State 28
+	expr -> LPAREN SUM . LBRACK branches RBRACK RPAREN 
+
+	LBRACK					shift	45
+
+State 29
+	expr -> LPAREN CONS . expr expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	46
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 30
+	expr -> LPAREN CAR . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	47
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 31
+	expr -> LPAREN CDR . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	48
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 32
+	expr -> LPAREN ARROW . expr expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	49
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 33
+	expr -> LPAREN STAR . expr expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	50
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 34
+	expr -> LABEL . 
+	expr -> LPAREN LABEL . expr RPAREN 
+	expr -> LPAREN LABEL . expr RPAREN 
+
+begin conflict:
+	UNIT					shift	16
+	UNIT					reduce	12
+end conflict
+begin conflict:
+	LABEL					shift	19
+	LABEL					reduce	12
+end conflict
+begin conflict:
+	SET					shift	14
+	SET					reduce	12
+end conflict
+	expr					goto	51
+begin conflict:
+	ONE					shift	15
+	ONE					reduce	12
+end conflict
+begin conflict:
+	VOID					shift	17
+	VOID					reduce	12
+end conflict
+begin conflict:
+	LPAREN					shift	13
+	LPAREN					reduce	12
+end conflict
+begin conflict:
+	IDENT					shift	18
+	IDENT					reduce	12
+end conflict
+
+State 35
+	tvar -> LPAREN COLON patt . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	52
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 36
+	patt -> LPAREN . COMMA patt patt RPAREN 
+
+	COMMA					shift	53
+
+State 37
+	patt -> WILD . 
+
+	LABEL					reduce	8
+	ONE					reduce	8
+	WILD					reduce	8
+	UNIT					reduce	8
+	SET					reduce	8
+	VOID					reduce	8
+	LPAREN					reduce	8
+	IDENT					reduce	8
+	RPAREN					reduce	8
+
+State 38
+	patt -> IDENT . 
+
+	LABEL					reduce	9
+	ONE					reduce	9
+	WILD					reduce	9
+	UNIT					reduce	9
+	SET					reduce	9
+	VOID					reduce	9
+	LPAREN					reduce	9
+	IDENT					reduce	9
+	RPAREN					reduce	9
+
+State 39
+	decl -> LPAREN LETREC tvar expr RPAREN . 
+
+	EOF					reduce	6
+	LPAREN					reduce	6
+
+State 40
+	expr -> LPAREN expr expr . RPAREN 
+
+	RPAREN					shift	54
+
+State 41
+	expr -> LPAREN LAMBDA patt . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	55
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 42
+	expr -> LPAREN SIGMA tvar . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	56
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 43
+	expr -> LPAREN PI tvar . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	57
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 44
+	expr -> LPAREN FUN LBRACK . branches RBRACK RPAREN 
+
+	LABEL					shift	61
+	branch					goto	58
+	branches					goto	59
+	LPAREN					shift	60
+	RBRACK					reduce	34
+
+State 45
+	expr -> LPAREN SUM LBRACK . branches RBRACK RPAREN 
+
+	LABEL					shift	61
+	branch					goto	58
+	branches					goto	62
+	LPAREN					shift	60
+	RBRACK					reduce	34
+
+State 46
+	expr -> LPAREN CONS expr . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	63
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 47
+	expr -> LPAREN CAR expr . RPAREN 
+
+	RPAREN					shift	64
+
+State 48
+	expr -> LPAREN CDR expr . RPAREN 
+
+	RPAREN					shift	65
+
+State 49
+	expr -> LPAREN ARROW expr . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	66
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 50
+	expr -> LPAREN STAR expr . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	67
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 51
+	expr -> LPAREN LABEL expr . RPAREN 
+	expr -> LPAREN LABEL expr . RPAREN 
+
+	RPAREN					shift	68
+
+State 52
+	tvar -> LPAREN COLON patt expr . RPAREN 
+
+	RPAREN					shift	69
+
+State 53
+	patt -> LPAREN COMMA . patt patt RPAREN 
+
+	WILD					shift	37
+	patt					goto	70
+	LPAREN					shift	36
+	IDENT					shift	38
+
+State 54
+	expr -> LPAREN expr expr RPAREN . 
+
+	UNIT					reduce	14
+	LABEL					reduce	14
+	SET					reduce	14
+	ONE					reduce	14
+	VOID					reduce	14
+	LPAREN					reduce	14
+	RPAREN					reduce	14
+	IDENT					reduce	14
+
+State 55
+	expr -> LPAREN LAMBDA patt expr . RPAREN 
+
+	RPAREN					shift	71
+
+State 56
+	expr -> LPAREN SIGMA tvar expr . RPAREN 
+
+	RPAREN					shift	72
+
+State 57
+	expr -> LPAREN PI tvar expr . RPAREN 
+
+	RPAREN					shift	73
+
+State 58
+	branches -> branch . 
+	branches -> branch . branches 
+
+	LABEL					shift	61
+	branch					goto	58
+	branches					goto	74
+	LPAREN					shift	60
+begin conflict:
+	RBRACK					reduce	34
+	RBRACK					reduce	35
+end conflict
+
+State 59
+	expr -> LPAREN FUN LBRACK branches . RBRACK RPAREN 
+
+	RBRACK					shift	75
+
+State 60
+	branch -> LPAREN . LABEL expr RPAREN 
+	branch -> LPAREN . FATARROW LABEL expr RPAREN 
+	branch -> LPAREN . FATARROW LPAREN LABEL patt RPAREN expr RPAREN 
+
+	LABEL					shift	77
+	FATARROW					shift	76
+
+State 61
+	branch -> LABEL . 
+
+	LABEL					reduce	30
+	LPAREN					reduce	30
+	RBRACK					reduce	30
+
+State 62
+	expr -> LPAREN SUM LBRACK branches . RBRACK RPAREN 
+
+	RBRACK					shift	78
+
+State 63
+	expr -> LPAREN CONS expr expr . RPAREN 
+
+	RPAREN					shift	79
+
+State 64
+	expr -> LPAREN CAR expr RPAREN . 
+
+	UNIT					reduce	27
+	LABEL					reduce	27
+	SET					reduce	27
+	ONE					reduce	27
+	VOID					reduce	27
+	LPAREN					reduce	27
+	RPAREN					reduce	27
+	IDENT					reduce	27
+
+State 65
+	expr -> LPAREN CDR expr RPAREN . 
+
+	UNIT					reduce	28
+	LABEL					reduce	28
+	SET					reduce	28
+	ONE					reduce	28
+	VOID					reduce	28
+	LPAREN					reduce	28
+	RPAREN					reduce	28
+	IDENT					reduce	28
+
+State 66
+	expr -> LPAREN ARROW expr expr . RPAREN 
+
+	RPAREN					shift	80
+
+State 67
+	expr -> LPAREN STAR expr expr . RPAREN 
+
+	RPAREN					shift	81
+
+State 68
+	expr -> LPAREN LABEL expr RPAREN . 
+	expr -> LPAREN LABEL expr RPAREN . 
+
+begin conflict:
+	UNIT					reduce	13
+	UNIT					reduce	24
+end conflict
+begin conflict:
+	LABEL					reduce	13
+	LABEL					reduce	24
+end conflict
+begin conflict:
+	SET					reduce	13
+	SET					reduce	24
+end conflict
+begin conflict:
+	ONE					reduce	13
+	ONE					reduce	24
+end conflict
+begin conflict:
+	VOID					reduce	13
+	VOID					reduce	24
+end conflict
+begin conflict:
+	LPAREN					reduce	13
+	LPAREN					reduce	24
+end conflict
+begin conflict:
+	RPAREN					reduce	13
+	RPAREN					reduce	24
+end conflict
+begin conflict:
+	IDENT					reduce	13
+	IDENT					reduce	24
+end conflict
+
+State 69
+	tvar -> LPAREN COLON patt expr RPAREN . 
+
+	UNIT					reduce	7
+	LABEL					reduce	7
+	SET					reduce	7
+	ONE					reduce	7
+	VOID					reduce	7
+	LPAREN					reduce	7
+	IDENT					reduce	7
+
+State 70
+	patt -> LPAREN COMMA patt . patt RPAREN 
+
+	WILD					shift	37
+	patt					goto	82
+	LPAREN					shift	36
+	IDENT					shift	38
+
+State 71
+	expr -> LPAREN LAMBDA patt expr RPAREN . 
+
+	UNIT					reduce	16
+	LABEL					reduce	16
+	SET					reduce	16
+	ONE					reduce	16
+	VOID					reduce	16
+	LPAREN					reduce	16
+	RPAREN					reduce	16
+	IDENT					reduce	16
+
+State 72
+	expr -> LPAREN SIGMA tvar expr RPAREN . 
+
+	UNIT					reduce	18
+	LABEL					reduce	18
+	SET					reduce	18
+	ONE					reduce	18
+	VOID					reduce	18
+	LPAREN					reduce	18
+	RPAREN					reduce	18
+	IDENT					reduce	18
+
+State 73
+	expr -> LPAREN PI tvar expr RPAREN . 
+
+	UNIT					reduce	17
+	LABEL					reduce	17
+	SET					reduce	17
+	ONE					reduce	17
+	VOID					reduce	17
+	LPAREN					reduce	17
+	RPAREN					reduce	17
+	IDENT					reduce	17
+
+State 74
+	branches -> branch branches . 
+
+	RBRACK					reduce	36
+
+State 75
+	expr -> LPAREN FUN LBRACK branches RBRACK . RPAREN 
+
+	RPAREN					shift	83
+
+State 76
+	branch -> LPAREN FATARROW . LABEL expr RPAREN 
+	branch -> LPAREN FATARROW . LPAREN LABEL patt RPAREN expr RPAREN 
+
+	LABEL					shift	85
+	LPAREN					shift	84
+
+State 77
+	branch -> LPAREN LABEL . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	86
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 78
+	expr -> LPAREN SUM LBRACK branches RBRACK . RPAREN 
+
+	RPAREN					shift	87
+
+State 79
+	expr -> LPAREN CONS expr expr RPAREN . 
+
+	UNIT					reduce	15
+	LABEL					reduce	15
+	SET					reduce	15
+	ONE					reduce	15
+	VOID					reduce	15
+	LPAREN					reduce	15
+	RPAREN					reduce	15
+	IDENT					reduce	15
+
+State 80
+	expr -> LPAREN ARROW expr expr RPAREN . 
+
+	UNIT					reduce	19
+	LABEL					reduce	19
+	SET					reduce	19
+	ONE					reduce	19
+	VOID					reduce	19
+	LPAREN					reduce	19
+	RPAREN					reduce	19
+	IDENT					reduce	19
+
+State 81
+	expr -> LPAREN STAR expr expr RPAREN . 
+
+	UNIT					reduce	20
+	LABEL					reduce	20
+	SET					reduce	20
+	ONE					reduce	20
+	VOID					reduce	20
+	LPAREN					reduce	20
+	RPAREN					reduce	20
+	IDENT					reduce	20
+
+State 82
+	patt -> LPAREN COMMA patt patt . RPAREN 
+
+	RPAREN					shift	88
+
+State 83
+	expr -> LPAREN FUN LBRACK branches RBRACK RPAREN . 
+
+	UNIT					reduce	26
+	LABEL					reduce	26
+	SET					reduce	26
+	ONE					reduce	26
+	VOID					reduce	26
+	LPAREN					reduce	26
+	RPAREN					reduce	26
+	IDENT					reduce	26
+
+State 84
+	branch -> LPAREN FATARROW LPAREN . LABEL patt RPAREN expr RPAREN 
+
+	LABEL					shift	89
+
+State 85
+	branch -> LPAREN FATARROW LABEL . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	90
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 86
+	branch -> LPAREN LABEL expr . RPAREN 
+
+	RPAREN					shift	91
+
+State 87
+	expr -> LPAREN SUM LBRACK branches RBRACK RPAREN . 
+
+	UNIT					reduce	25
+	LABEL					reduce	25
+	SET					reduce	25
+	ONE					reduce	25
+	VOID					reduce	25
+	LPAREN					reduce	25
+	RPAREN					reduce	25
+	IDENT					reduce	25
+
+State 88
+	patt -> LPAREN COMMA patt patt RPAREN . 
+
+	LABEL					reduce	10
+	ONE					reduce	10
+	WILD					reduce	10
+	UNIT					reduce	10
+	SET					reduce	10
+	VOID					reduce	10
+	LPAREN					reduce	10
+	IDENT					reduce	10
+	RPAREN					reduce	10
+
+State 89
+	branch -> LPAREN FATARROW LPAREN LABEL . patt RPAREN expr RPAREN 
+
+	WILD					shift	37
+	patt					goto	92
+	LPAREN					shift	36
+	IDENT					shift	38
+
+State 90
+	branch -> LPAREN FATARROW LABEL expr . RPAREN 
+
+	RPAREN					shift	93
+
+State 91
+	branch -> LPAREN LABEL expr RPAREN . 
+
+	LABEL					reduce	31
+	LPAREN					reduce	31
+	RBRACK					reduce	31
+
+State 92
+	branch -> LPAREN FATARROW LPAREN LABEL patt . RPAREN expr RPAREN 
+
+	RPAREN					shift	94
+
+State 93
+	branch -> LPAREN FATARROW LABEL expr RPAREN . 
+
+	LABEL					reduce	32
+	LPAREN					reduce	32
+	RBRACK					reduce	32
+
+State 94
+	branch -> LPAREN FATARROW LPAREN LABEL patt RPAREN . expr RPAREN 
+
+	LABEL					shift	19
+	UNIT					shift	16
+	SET					shift	14
+	expr					goto	95
+	ONE					shift	15
+	VOID					shift	17
+	LPAREN					shift	13
+	IDENT					shift	18
+
+State 95
+	branch -> LPAREN FATARROW LPAREN LABEL patt RPAREN expr . RPAREN 
+
+	RPAREN					shift	96
+
+State 96
+	branch -> LPAREN FATARROW LPAREN LABEL patt RPAREN expr RPAREN . 
+
+	LABEL					reduce	33
+	LPAREN					reduce	33
+	RBRACK					reduce	33
+
+7 shift/reduce conflicts
+10 reduce/reduce conflicts

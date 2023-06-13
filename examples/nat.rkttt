@@ -1,0 +1,11 @@
+(let (: bool set)
+  (sum ['true 'false]))
+
+(letrec (: nat set)
+  (sum ['zero
+       ('suc nat)]))
+
+(letrec (: is-even (-> nat bool))
+  (lambda x 
+    (fun [(=> 'zero 't)
+          (=> ('suc n) 'f)])))

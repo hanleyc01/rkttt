@@ -1,0 +1,13 @@
+;; a one and two type, intuitively
+(let (: two set) ; `bool`
+  (sum ['t 'f]))
+(let (: one set) ; `unit`
+  (sum ['tt]))
+
+(let (: rt (-> two set)) ; a dependent function
+  (fun [(=> 't unit)
+        (=> 'f one)]))
+
+(let (: func (pi (: b two) (rt b))) ; return differnt things :3
+  (fun [(=> 't 0)
+        (=> 'f 'tt)]))

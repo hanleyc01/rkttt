@@ -1,0 +1,3 @@
+(letrec (: nat set)
+  (sum ['zero
+       ('succ nat)]))
